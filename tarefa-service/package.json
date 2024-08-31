@@ -1,5 +1,5 @@
 {
-  "name": "backend_service",
+  "name": "tarefa-service",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -22,9 +22,7 @@
   "dependencies": {
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
-    "@nestjs/mongoose": "^10.0.10",
     "@nestjs/platform-express": "^10.0.0",
-    "mongoose": "^8.6.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },
@@ -49,7 +47,7 @@
     "ts-loader": "^9.4.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.1.3"
   },
   "jest": {
     "moduleFileExtensions": [
