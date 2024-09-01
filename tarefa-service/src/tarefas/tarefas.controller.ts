@@ -7,6 +7,7 @@ import {
     Body,
     Param,
 } from '@nestjs/common';
+import { PostTarefaDto } from './dtos/post-tarefa.dto';
 
 @Controller('/tarefas')
 export class TarefasController {
@@ -18,11 +19,12 @@ export class TarefasController {
 
     @Get('/:id')
     getTarefa(@Param('id') id: String) {
+
     }
 
     @Post()
-    postTarefa(@Body() body: any) {
-        console.log("body:", body)
+    postTarefa(@Body() body: PostTarefaDto) {
+        console.log("body:", body);
     }
 
     @Put('/:id')
