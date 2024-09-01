@@ -1,8 +1,19 @@
-import * as mongoose from 'mongoose';
+import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
-export const TarefaSchema = new mongoose.Schema({
-    titulo: String,
-    descricao: String,
-    status: String,
-    dataCriacao: String,
-});
+@Schema()
+export class Tarefa {
+
+    @Prop({ required: true, unique: true })
+    titulo: string;
+
+    @Prop({ required: true })
+    descricao: string;
+
+    @Prop({ required: true })
+    status: string;
+
+    @Prop({  required: true })
+    dataCriacao: string;
+};
+
+export const TarefaSchema = SchemaFactory.createForClass(Tarefa);

@@ -15,30 +15,41 @@ import { TarefasService } from './tarefas.service';
 @Controller('/tarefas')
 export class TarefasController {
 
-    constructor(public TarefasService: TarefasService) {}
+    constructor(public tarefasService: TarefasService) {}
 
     @Get()
-    listTarefas() {
-        return { response: "teste" };
+    async listTarefas() {
+        const response = await this.tarefasService.listTarefas();
+
+        return { response: response };
     }
 
     @Get('/:id')
-    getTarefa(@Param('id') id: String) {
+    async getTarefa(@Param('id') id: String) {
 
     }
 
     @Post()
-    postTarefa(@Body() body: PostTarefaDto) {
-        console.log("body:", body);
+    async postTarefa(@Body() body: PostTarefaDto) {
+        const { titulo, descricao, status, dataCriacao } = body;
+
+        const response = await this.tarefasService.createTarefa(
+            titulo,
+            descricao,
+            status,
+            dataCriacao
+        );
+
+        return { response: response };
     }
 
     @Put('/:id')
-    updateTarefa() {
+    async updateTarefa() {
 
     }
 
     @Delete('/:id')
-    deleteTarefa() {
+    async deleteTarefa() {
 
     }
 }

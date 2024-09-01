@@ -7,22 +7,22 @@ export class TarefasService {
     constructor(public tarefasRepo: TarefasRepository) {}
 
     async getTarefa(id: string) {
-        return this.tarefasRepo.getTarefa(id);
+        return await this.tarefasRepo.getTarefa(id);
     }
 
     async listTarefas() {
-        return this.tarefasRepo.listTarefas();
+        return await this.tarefasRepo.listTarefas();
     }
 
-    async createTarefa(dados: any) {
-        return this.tarefasRepo.createTarefa(dados);
+    async createTarefa(titulo: string, descricao: string, status: string, dataCriacao: string) {
+        return await this.tarefasRepo.createTarefa(titulo, descricao, status, dataCriacao);
     }
 
     async updateTarefa(id: string, dados: any) {
-        return this.tarefasRepo.updateTarefa(id, dados);
+        return await this.tarefasRepo.updateTarefa(id, dados);
     }
 
     async deleteTarefa(id: string) {
-        return this.tarefasRepo.deleteTarefa(id);
+        return await this.tarefasRepo.deleteTarefa(id);
     }
 }
