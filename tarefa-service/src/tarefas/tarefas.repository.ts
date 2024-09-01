@@ -8,10 +8,14 @@ export class TarefasRepository {
     
     constructor(@InjectModel(Tarefa.name) private tarefaModel: Model<Tarefa>) {}
 
-    async getTarefa(id: string) {}
+    async getTarefa(id: string) {
+        return this.tarefaModel.findOne({
+            _id: id
+        });
+    }
 
     async listTarefas() {
-        return await this.tarefaModel.find();
+        return await this.tarefaModel.find().lean();
     }
 
     async createTarefa(titulo: string, descricao: string, status: string, dataCriacao: string) {
@@ -27,7 +31,25 @@ export class TarefasRepository {
         return await tarefa.save();
     }
 
-    async updateTarefa(id: string, dados: any) {}
+    async updateTarefa(id: string, titulo: string, descricao: string, status: string, dataCriacao: string) {
+        const dados = {
+            titulo: titulo,
+            descricao: descricao,
+            status: status,
+            dataCriacao: dataCriacao
+        }
 
-    async deleteTarefa(id: string) {}
+        return this.tarefaModel.updateOne(
+            {
+                _id: id
+            },
+            dados
+        );
+    }
+
+    async deleteTarefa(id: string) {
+        return this.tarefaModel.deleteOne({
+            _id: id
+        });
+    }
 }

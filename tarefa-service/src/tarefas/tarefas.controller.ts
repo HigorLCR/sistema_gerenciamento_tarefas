@@ -1,55 +1,90 @@
-import { 
-    Controller, 
-    Get, 
-    Post, 
-    Put, 
+import {
+    Controller,
+    Get,
+    Post,
+    Put,
     Delete,
     Body,
     Param,
     NotFoundException
 } from '@nestjs/common';
-import { PostTarefaDto } from './dtos/post-tarefa.dto';
+import { CreateTarefaDto } from './dtos/createTarefa.dto';
+import { UpdateTarefaDto } from './dtos/updateTarefa.dto';
 import { TarefasService } from './tarefas.service';
 
 //adicionar try catch blocks
 @Controller('/tarefas')
 export class TarefasController {
 
-    constructor(public tarefasService: TarefasService) {}
+    constructor(public tarefasService: TarefasService) { }
 
     @Get()
     async listTarefas() {
-        const response = await this.tarefasService.listTarefas();
+        try {
+            const response = await this.tarefasService.listTarefas();
 
-        return { response: response };
+            return { response: response };
+        } catch (e: any) {
+            return { error: e };
+        }
     }
 
     @Get('/:id')
-    async getTarefa(@Param('id') id: String) {
+    async getTarefa(@Param('id') id: string) {
+        try {
+            const response = await this.tarefasService.getTarefa(id);
 
+            return { response: response };
+        } catch (e: any) {
+            return { error: e };
+        }
     }
 
     @Post()
-    async postTarefa(@Body() body: PostTarefaDto) {
-        const { titulo, descricao, status, dataCriacao } = body;
+    async createTarefa(@Body() body: CreateTarefaDto) {
+        try {
+            const { titulo, descricao, status, dataCriacao } = body;
 
-        const response = await this.tarefasService.createTarefa(
-            titulo,
-            descricao,
-            status,
-            dataCriacao
-        );
+            const response = await this.tarefasService.createTarefa(
+                titulo,
+                descricao,
+                status,
+                dataCriacao
+            );
 
-        return { response: response };
+            return { response: response };
+        } catch (e: any) {
+            return { error: e };
+        }
     }
 
     @Put('/:id')
-    async updateTarefa() {
+    async updateTarefa(@Param('id') id: string, @Body() body: UpdateTarefaDto) {
+        try {
+            const { titulo, descricao, status, dataCriacao } = body;
 
+            const response = await this.tarefasService.updateTarefa(
+                id,
+                titulo,
+                descricao,
+                status,
+                dataCriacao
+            );
+
+            return { response: response };
+        } catch (e: any) {
+            return { error: e };
+        }
     }
 
     @Delete('/:id')
-    async deleteTarefa() {
+    async deleteTarefa(@Param('id') id: string) {
+        try {
+            const response = await this.tarefasService.deleteTarefa(id);
 
+            return { response: response };
+        } catch (e: any) {
+            return { error: e };
+        }
     }
 }

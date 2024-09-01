@@ -1,6 +1,6 @@
 import { IsString, IsDateString } from 'class-validator';
 
-export class PostTarefaDto {
+export class CreateTarefaDto {
 
     @IsString()
     titulo: string;
@@ -12,5 +12,5 @@ export class PostTarefaDto {
     status: string;
 
     @IsDateString()
-    dataCriacao: any;
+    dataCriacao: string;
 }
