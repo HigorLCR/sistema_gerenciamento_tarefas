@@ -1,0 +1,30 @@
+### Listar todas as tarefas
+GET http://localhost:3000/tarefas
+
+### Retornar a tarefa de id 123
+GET http://localhost:3000/tarefas/66d486a5a4db1ad35e4b4f9b
+
+### Criar uma nova tarefa
+POST http://localhost:3000/tarefas
+Content-Type: application/json
+
+{
+    "titulo": "abacaxi",
+    "descricao": "Essa é a primeira tarefa adicionada ao sistema",
+    "status": "pendente",
+    "dataCriacao": "2020-12-12"
+}
+
+### Atualizar uma tarefa de id 123
+PUT http://localhost:3000/tarefas/66d486a5a4db1ad35e4b4f9b
+Content-Type: application/json
+
+{
+    "titulo": "novo titulo",
+    "descricao": "Essa descrição não tava aqui",
+    "status": "concluída",
+    "dataCriacao": "2016-01-02"
+}
+
+### Excluir uma tarefa de id 123
+DELETE http://localhost:3000/tarefas/66d486a5a4db1ad35e4b4f9b
