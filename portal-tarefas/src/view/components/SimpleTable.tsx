@@ -6,7 +6,7 @@ type SimpleTableProps = {
   content: Array<object>;
 }
 
-function SimpleTable<SimpleTableProps>({ labels, content }) {
+function SimpleTable({ labels, content }: SimpleTableProps) {
   const colunas = labels.map((item) => {
     return {
       key: item,

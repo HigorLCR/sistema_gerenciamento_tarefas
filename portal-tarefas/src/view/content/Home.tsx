@@ -6,7 +6,6 @@ import {
     CCol, 
     CRow,
     CButton,
-    CButtonGroup,
 } from '@coreui/react';
 import SimpleTable from '../components/SimpleTable.tsx';
 
@@ -42,8 +41,7 @@ function Home() {
                         tasks.isLoading || tasks.error 
                             ? ( tasks.isLoading ? 'Carregando...' : 'Houve algum erro coletando dados. Por favor, contate um administrador') 
                             : (<SimpleTable labels={taskLabels} content={tasks.data}/>)                      
-                    }
-                    
+                    }    
                 </CCol>
             </CRow>
         </CContainer>

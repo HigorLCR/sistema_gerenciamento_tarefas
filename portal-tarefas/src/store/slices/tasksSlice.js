@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchTasks } from '../thunks/fetchTasks';
-import { fetchTask } from '../thunks/fetchTask';
-import { createTask } from '../thunks/createTask';
-import { updateTask } from '../thunks/updateTask';
-import { deleteTask } from '../thunks/deleteTask';
+import { fetchTasks } from '../thunks/fetchTasks.ts';
+import { fetchTask } from '../thunks/fetchTask.ts';
+import { createTask } from '../thunks/createTask.ts';
+import { updateTask } from '../thunks/updateTask.ts';
+import { deleteTask } from '../thunks/deleteTask.ts';
 
 
 const taskSlice = createSlice({
@@ -21,14 +21,17 @@ const taskSlice = createSlice({
         },
         create: {
             isLoading: false,
+            success: false,
             error: null
         },
         delete: {
             isLoading: false,
+            success: false,
             error: null
         },
         update: {
             isLoading: false,
+            success: false,
             error: null
         }
     },
@@ -43,7 +46,7 @@ const taskSlice = createSlice({
         });
         builder.addCase(fetchTasks.rejected, (state, action) => {
             state.tasks.isLoading = false;
-            state.tasks.error = action.payload ? action.payload.error : 1;
+            state.tasks.error = action.payload ? action.payload.error : 500;
         });
 
         builder.addCase(fetchTask.pending, (state, action) => {
@@ -56,19 +59,21 @@ const taskSlice = createSlice({
         });
         builder.addCase(fetchTask.rejected, (state, action) => {
             state.task.isLoading = false;
-            state.task.error = action.payload ? action.payload.error : 1;
+            state.task.error = action.payload ? action.payload.error : 500;
         });
 
         builder.addCase(createTask.pending, (state, action) => {
             state.create.isLoading = true;
+            state.create.success = false;
             state.create.error = null;
         });
         builder.addCase(createTask.fulfilled, (state, action) => {
             state.create.isLoading = false;
+            state.create.success = true;
         });
         builder.addCase(createTask.rejected, (state, action) => {
             state.create.isLoading = false;
-            state.create.error = action.payload ? action.payload.error : 1;
+            state.create.error = action.payload ? action.payload.error : 500;
         });
 
         builder.addCase(updateTask.pending, (state, action) => {
@@ -77,10 +82,11 @@ const taskSlice = createSlice({
         });
         builder.addCase(updateTask.fulfilled, (state, action) => {
             state.update.isLoading = false;
+            state.update.success = true;
         });
         builder.addCase(updateTask.rejected, (state, action) => {
             state.update.isLoading = false;
-            state.update.error = action.payload ? action.payload.error : 1;
+            state.update.error = action.payload ? action.payload.error : 500;
         });
 
         builder.addCase(deleteTask.pending, (state, action) => {
@@ -89,10 +95,11 @@ const taskSlice = createSlice({
         });
         builder.addCase(deleteTask.fulfilled, (state, action) => {
             state.delete.isLoading = false;
+            state.delete.success = true;
         });
         builder.addCase(deleteTask.rejected, (state, action) => {
             state.delete.isLoading = false;
-            state.delete.error = action.payload ? action.payload.error : 1;
+            state.delete.error = action.payload ? action.payload.error : 500;
         });
     }
 });

@@ -1,10 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const updateTask =  createAsyncThunk('tasks/update', async (id, dados) => {
-    const { titulo, descricao, status, dataCriacao } = dados;
+const updateTask =  createAsyncThunk('tasks/update', async (dados: {
+    id: string,
+    titulo: string,
+    descricao: string,
+    status: string,
+    dataCriacao: string
+}) => {
+    const { id, titulo, descricao, status, dataCriacao } = dados;
     
-    const response = axios.put(
+    const response: any = axios.put(
         `http://localhost:3000/tarefas/${id}`,
         {
             titulo,
