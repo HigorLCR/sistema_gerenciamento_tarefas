@@ -21,7 +21,17 @@ export class TarefasController {
     @Get()
     async listTarefas() {
         try {
-            const response = await this.tarefasService.listTarefas();
+            let response = await this.tarefasService.listTarefas();
+            
+            response = response.map((item) => {
+                return { 
+                    id: item._id,
+                    titulo: item.titulo,
+                    descricao: item.descricao,
+                    status: item.status,
+                    dataCriacao: item.dataCriacao
+                }
+            });
 
             return { response: response };
         } catch (e: any) {
