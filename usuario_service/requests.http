@@ -1,0 +1,26 @@
+### Listar todos os usuarios
+GET http://localhost:3100/users
+
+### Retornar o usuário de id 123
+GET http://localhost:3100/users/66d486a5a4db1ad35e4b4f9b
+
+### Criar um novo usuário
+POST http://localhost:3100/users
+Content-Type: application/json
+
+{
+    "login": "admin"
+    "senha": "admin"
+}
+
+### Atualizar o usuário de id 123
+PUT http://localhost:3100/users/66d486a5a4db1ad35e4b4f9b
+Content-Type: application/json
+
+{
+    "login": "admin"
+    "senha": "admin"
+}
+
+### Excluir o usuário de id 123
+DELETE http://localhost:3100/users/66d486a5a4db1ad35e4b4f9b
