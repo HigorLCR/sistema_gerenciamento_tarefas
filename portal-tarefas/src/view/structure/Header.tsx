@@ -15,7 +15,7 @@ function Header() {
     const navigate = useNavigate();
 
     const onClickHome = () => {
-        navigate('/');
+        navigate('/home');
     };
 
     const onClickNovaTarefa = () => {
