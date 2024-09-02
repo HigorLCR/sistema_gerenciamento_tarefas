@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createTask, AppDispatch } from '../../store/index.ts';
+import { createTask, updateTask, AppDispatch } from '../../store/index.ts';
 import DatePicker from "react-datepicker";
 import {
     CContainer,
@@ -16,44 +17,50 @@ import {
 } from '@coreui/react';
 
 function TaskEditor() {
-    const [titulo, setTitulo] = useState('');
-    const [isStatusPendente, setIsStatusPendente] = useState(true);
-    const [descricao, setDescricao] = useState('');
-    const [dataCriacao, setDataCriacao] = useState(new Date());
-
+    const location = useLocation();
     const dispatch = useDispatch<AppDispatch>();
+
+    const [titulo, setTitulo] = useState(location.state ? location.state.titulo : '');
+    const [isStatusPendente, setIsStatusPendente] = useState(location.state ? location.state.status === 'pendente' : true);
+    const [descricao, setDescricao] = useState(location.state ? location.state.descricao : '');
+    const [dataCriacao, setDataCriacao] = useState(location.state ? new Date(location.state.dataCriacao) : new Date());
+
     const { create } = useSelector((state: any) => {
         return state.taskReducer;
     });
 
     const onSendForm = () => {
         const dados = {
+            id: location.state ? location.state.id : undefined,
             titulo: titulo,
             descricao: descricao,
             status: isStatusPendente ? 'pendente' : 'concluída',
             dataCriacao: dataCriacao.toISOString()
         };
 
-        dispatch(createTask(dados));
+        if (location.state) {
+            dispatch(updateTask(dados));
+        } else {
+            dispatch(createTask(dados));
 
-        setTitulo('');
-        setIsStatusPendente(true);
-        setDescricao('');
-        setDataCriacao(new Date());
+            setTitulo('');
+            setIsStatusPendente(true);
+            setDescricao('');
+            setDataCriacao(new Date());
+        }
+
     }
 
     return (
         <CContainer>
             <CRow className='mt-5 pt-5'>
-                <CCol>
-                    <CButtonGroup>
-                        <CButton color='success'>
-                            Criar Nova
-                        </CButton>
-                        <CButton color='info'>
-                            Editar
-                        </CButton>
-                    </CButtonGroup>
+                <CCol md={11}>
+                    <h3>{ location.state ? `Editando Tarefa '${location.state.titulo}'` : 'Criando Nova Tarefa'}</h3>
+                </CCol>
+                <CCol md={1}>
+                    <CButton color='secondary'>
+                        Voltar
+                    </CButton>
                 </CCol>
             </CRow>
             <CRow className='align-self-center'>
@@ -110,9 +117,9 @@ function TaskEditor() {
                                 <CButton color='primary' onClick={onSendForm}>Enviar</CButton>
                             </CCol>
                             {
-                                create.isPending 
-                                    ? 'carregando...' 
-                                    : ( create.error ? `Erro: ${create.error}` : ( create.success ? 'Sucesso' : '') )
+                                create.isPending
+                                    ? 'carregando...'
+                                    : (create.error ? `Erro: ${create.error}` : (create.success ? 'Sucesso' : ''))
                             }
                         </CRow>
                     </CForm>

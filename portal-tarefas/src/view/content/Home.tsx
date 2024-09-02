@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTasks, AppDispatch } from '../../store/index.ts';
+import { useNavigate } from "react-router-dom";
+import { fetchTasks, deleteTask, AppDispatch } from '../../store/index.ts';
 import { 
     CContainer, 
     CCol, 
@@ -11,6 +12,8 @@ import SimpleTable from '../components/SimpleTable.tsx';
 
 function Home() {
     const dispatch = useDispatch<AppDispatch>();
+    const navigate = useNavigate();
+
     const { tasks } = useSelector((state: any) => {
         return state.taskReducer;
     })
@@ -23,6 +26,24 @@ function Home() {
     }, []);
 
 
+    const onExcluir = (id: string) => {
+        dispatch(deleteTask(id));
+        setTimeout(() => {
+            dispatch(fetchTasks());
+        }, 400);
+    }
+
+    const onEditar = (dados: {
+        id: string,
+        titulo: string,
+        descricao: string,
+        status: string,
+        dataCriacao: string,
+    })  => {
+        navigate('/tarefa/formulario', { state: dados });
+    }
+
+
     return (
         <CContainer>
             <CRow>
@@ -32,15 +53,22 @@ function Home() {
             </CRow>
             <CRow>
                 <CCol>
-                    <CButton color='success'>Nova Tarefa</CButton>
+                    <CButton color='success' onClick={() => navigate('/tarefa/formulario')}>Nova Tarefa</CButton>
                 </CCol>
             </CRow>
             <CRow>
-                <CCol>
+                <CCol className='text-center'>
                     {
                         tasks.isLoading || tasks.error 
                             ? ( tasks.isLoading ? 'Carregando...' : 'Houve algum erro coletando dados. Por favor, contate um administrador') 
-                            : (<SimpleTable labels={taskLabels} content={tasks.data}/>)                      
+                            : (
+                                <SimpleTable 
+                                    labels={taskLabels} 
+                                    content={tasks.data}
+                                    onEditar={onEditar}
+                                    onExcluir={onExcluir}
+                                />
+                            )                      
                     }    
                 </CCol>
             </CRow>

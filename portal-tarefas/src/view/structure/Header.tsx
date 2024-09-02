@@ -15,10 +15,11 @@ function Header() {
     const navigate = useNavigate();
 
     const onClickHome = () => {
+        navigate('/');
     };
 
     const onClickNovaTarefa = () => {
-        
+        navigate('/tarefa/formulario');  
     };
 
     return (
@@ -27,10 +28,10 @@ function Header() {
                 <CHeaderBrand>Gerenciador de Tarefas</CHeaderBrand>
                 <CHeaderNav>
                     <CNavItem>
-                        <CNavLink style={{ cursor:'pointer' }} color='primary' onClick={() => navigate('/')} >Home</CNavLink>
+                        <CNavLink style={{ cursor:'pointer' }} color='primary' onClick={onClickHome} >Home</CNavLink>
                     </CNavItem>
                     <CNavItem>
-                        <CButton color='success' onClick={() => navigate('/tarefa/formulario')} >Nova Tarefa</CButton>
+                        <CButton color='success' onClick={onClickNovaTarefa} >Nova Tarefa</CButton>
                     </CNavItem>
                 </CHeaderNav>
             </CContainer>
