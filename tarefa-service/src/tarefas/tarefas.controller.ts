@@ -21,7 +21,6 @@ export class TarefasController {
     @Get()
     async listTarefas() {
         try {
-            console.log("CHEGOU LIST")
             let response = await this.tarefasService.listTarefas();
             
             response = response.map((item) => {
@@ -45,7 +44,6 @@ export class TarefasController {
     @Get('/:id')
     async getTarefa(@Param('id') id: string) {
         try {
-            console.log("CHEGOU GET")
             const response = await this.tarefasService.getTarefa(id);
 
             return { response: response };
@@ -57,7 +55,6 @@ export class TarefasController {
     @Post()
     async createTarefa(@Body() body: CreateTarefaDto) {
         try {
-            console.log("CHEGOU CREATE")
             const { titulo, descricao, status, dataCriacao } = body;
 
             const response = await this.tarefasService.createTarefa(
@@ -76,7 +73,6 @@ export class TarefasController {
     @Put('/:id')
     async updateTarefa(@Param('id') id: string, @Body() body: UpdateTarefaDto) {
         try {
-            console.log("CHEGOU UPDATE")
             const { titulo, descricao, status, dataCriacao } = body;
 
             const response = await this.tarefasService.updateTarefa(
@@ -96,7 +92,6 @@ export class TarefasController {
     @Delete('/:id')
     async deleteTarefa(@Param('id') id: string) {
         try {
-            console.log("CHEGOU DELETE")
             const response = await this.tarefasService.deleteTarefa(id);
 
             return { response: response };

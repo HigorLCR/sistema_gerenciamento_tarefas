@@ -55,7 +55,7 @@ function TaskEditor() {
         <CContainer>
             <CRow className='mt-5 pt-5'>
                 <CCol md={11}>
-                    <h3>{ location.state ? `Editando Tarefa '${location.state.titulo}'` : 'Criando Nova Tarefa'}</h3>
+                    <h3>{ location.state ? `Editando Tarefa '${location.state.id}'` : 'Criando Nova Tarefa'}</h3>
                 </CCol>
                 <CCol md={1}>
                     <CButton color='secondary'>
