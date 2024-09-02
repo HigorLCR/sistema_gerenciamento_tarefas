@@ -30,7 +30,7 @@ function Header() {
                         <CNavLink style={{ cursor:'pointer' }} color='primary' onClick={() => navigate('/')} >Home</CNavLink>
                     </CNavItem>
                     <CNavItem>
-                        <CButton color='success' onClick={() => navigate('/novatarefa')} >Nova Tarefa</CButton>
+                        <CButton color='success' onClick={() => navigate('/tarefa/formulario')} >Nova Tarefa</CButton>
                     </CNavItem>
                 </CHeaderNav>
             </CContainer>

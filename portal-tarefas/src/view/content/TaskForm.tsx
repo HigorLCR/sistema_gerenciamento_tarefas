@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CreateTask() {
+function TaskForm() {
     return (
         <div>
             esse é o formulário de criar nova tarefa
@@ -8,4 +8,4 @@ function CreateTask() {
     );
 }
 
-export default CreateTask;
+export default TaskForm;

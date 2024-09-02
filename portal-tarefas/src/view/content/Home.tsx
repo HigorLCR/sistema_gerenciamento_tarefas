@@ -8,36 +8,42 @@ import {
     CButton,
     CButtonGroup,
 } from '@coreui/react';
+import SimpleTable from '../components/SimpleTable.tsx';
 
 function Home() {
     const dispatch = useDispatch<AppDispatch>();
     const { tasks } = useSelector((state: any) => {
         return state.taskReducer;
     })
-    console.log("TASKS: ", tasks);
+    const taskLabels = tasks.data.length > 0 
+        ? Object.keys(tasks.data[0])
+        : [];
 
     useEffect(() => {
         dispatch(fetchTasks());
     }, []);
 
-    if (tasks.isLoading) {
-        return (<div>carregando...</div>);
-    }
-
-    if (tasks.error) {
-        return (<div>Houve algum erro coletando dados. Por favor, contate um administrador</div>)
-    }
 
     return (
-        <CContainer className='d-flex justify-content-center'>
+        <CContainer>
             <CRow>
-                <CCol className='mt-5 pt-5' >
+                <CCol className='text-center align-self-center mt-5 pt-5' >
                     <h1>Bem-Vindo ao Gerenciador de tarefas!</h1>
                 </CCol>
             </CRow>
             <CRow>
                 <CCol>
-
+                    <CButton color='success'>Nova Tarefa</CButton>
+                </CCol>
+            </CRow>
+            <CRow>
+                <CCol>
+                    {
+                        tasks.isLoading || tasks.error 
+                            ? ( tasks.isLoading ? 'Carregando...' : 'Houve algum erro coletando dados. Por favor, contate um administrador') 
+                            : (<SimpleTable labels={taskLabels} content={tasks.data}/>)                      
+                    }
+                    
                 </CCol>
             </CRow>
         </CContainer>
