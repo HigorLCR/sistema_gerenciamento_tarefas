@@ -4,33 +4,33 @@ import {
     CContainer,
     CHeader,
     CHeaderBrand,
-    CHeaderDivider,
     CHeaderNav,
-    CHeaderToggler,
-    CCollapse,
     CNavItem,
     CNavLink,
-    CDropdown,
-    CDropdownToggle,
-    CDropdownMenu,
-    CDropdownDivider,
-    CDropdownItem,
-    CForm,
-    CFormInput,
     CButton
 } from '@coreui/react';
 
 function Header() {
+
+    const navigate = useNavigate();
+
+    const onClickHome = () => {
+    };
+
+    const onClickNovaTarefa = () => {
+        
+    };
+
     return (
         <CHeader>
             <CContainer fluid>
                 <CHeaderBrand>Gerenciador de Tarefas</CHeaderBrand>
                 <CHeaderNav>
                     <CNavItem>
-                        <CNavLink color='primary' href='#'>Home</CNavLink>
+                        <CNavLink style={{ cursor:'pointer' }} color='primary' onClick={() => navigate('/')} >Home</CNavLink>
                     </CNavItem>
                     <CNavItem>
-                        <CButton color='success'>Criação</CButton>
+                        <CButton color='success' onClick={() => navigate('/novatarefa')} >Nova Tarefa</CButton>
                     </CNavItem>
                 </CHeaderNav>
             </CContainer>
