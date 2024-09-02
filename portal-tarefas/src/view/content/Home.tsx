@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchTasks, AppDispatch } from '../../store/index.ts';
 import { 
     CContainer, 
     CCol, 
@@ -8,6 +10,12 @@ import {
 } from '@coreui/react';
 
 function Home() {
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        dispatch(fetchTasks());
+    }, []);
+
     return (
         <CContainer className='d-flex justify-content-center'>
             <CRow>
