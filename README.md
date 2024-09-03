@@ -6,7 +6,7 @@ Para esse projeto é necessário instalar os seguintes softwares:
 
     - node versão v20.17.0 - https://nodejs.org/en/download/
     
-    - MongoDB versão 7.0 - https://www.mongodb.com/try/download/community?tck=docs_server (de preferência não instalar a versão AAS)
+    - MongoDB versão 7.0 - https://www.mongodb.com/try/download/community?tck=docs_server (de preferência não instalar a versão as a Service/AAS desmarcando a caixinha com essa opção)
         . É necessário ir em 'C:/' e criar as pastas 'data/db' para conseguir executar o mongodb;
 
     - Para testar as endpoints de API manualmente, é possível utilizar uma extensão disponível na IDE VSCode chamada 'REST Client'
