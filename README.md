@@ -44,15 +44,23 @@ Decisões tomadas
 - A descrição do problema foi muito aberta em relação a qualquer das tarefas pedidas, como CRUD de tarefas e usuários por exemplo, portanto eu fiz todas as operações básicas de CRUD para ambos serviços implementando uso delas no Frontend de modo a satisfazer a manipulação do sistema para o caso das Tarefas, e futuramente com uso amplo também para usuários;
 
 - A Stack escolhida para o BackEnd foi a seguinte:
+    
     . JavaScript/TypeScript com node.js (Escolhido pela aptidão que já possuo em javascript e pelo conhecimento prévio que tinha de APIs em JavaScript tanto em Express.js quanto em Nest.js);
+    
     . Framework Nest.JS para estrutura das APIs (Escolhi pela maior modularidade da framework e por combinar bastante com a arquitetura de microsserviços);
+    
     . MongoDB utilizando a Lib Mongoose (Escolhi MongoDB pelo conhecimento prévio/maior domínio desse SGBD além da maior flexibilidade que ele permite para tipos diferentes de dados como documentos que podem possuir dados opcionais, que é algo razoável de se ter em um sistema de tarefas para complementá-las como um PDF de explicação por exemplo);
 
 - A stack escolhida para o FrontEnd foi a seguinte:
+    
     . JavaScript/TypeScript (utilizei majoritariamente typescript pela grande ajuda na manutenabilidade para grandes projetos e a longo prazo);
+    
     . React (Escolhi React pela praticidade e familiaridade tanto com Hooks quanto Componentes de Classe/LyfeCicle Methods);
+    
     . Redux para gerenciamento de estados (Pela grande compatibilidade com React nessa tarefa de gerenciamento de estados);
+    
     . Axios para envio de requisições para APIs;
+    
     . CoreUI para design e estilização de componentes (Utilizei pelo prazo apertado demais para focar em estilização, como a biblioteca fornece componentes bem estilizados e sóbreos, achei que se encaixaria bem com o propósito do projeto);
 
 - Foi feita a simulação de uma arquitetura de microsserviços com os serviços de usuário e tarefas, porém por falta de tempo para elaboração a conexão deles ao servidor do Mongo é a mesma;
