@@ -2,25 +2,25 @@
 GET http://localhost:3100/users
 
 ### Retornar o usuário de id 123
-GET http://localhost:3100/users/66d486a5a4db1ad35e4b4f9b
+GET http://localhost:3100/users/66d641c2848fd9ef4679a46b
 
 ### Criar um novo usuário
 POST http://localhost:3100/users
 Content-Type: application/json
 
 {
-    "login": "admin"
+    "login": "admin",
     "senha": "admin"
 }
 
 ### Atualizar o usuário de id 123
-PUT http://localhost:3100/users/66d486a5a4db1ad35e4b4f9b
+PUT http://localhost:3100/users/66d641c2848fd9ef4679a46b
 Content-Type: application/json
 
 {
-    "login": "admin"
-    "senha": "admin"
+    "login": "admin1",
+    "senha": "admin1"
 }
 
 ### Excluir o usuário de id 123
-DELETE http://localhost:3100/users/66d486a5a4db1ad35e4b4f9b
+DELETE http://localhost:3100/users/66d641c2848fd9ef4679a46b

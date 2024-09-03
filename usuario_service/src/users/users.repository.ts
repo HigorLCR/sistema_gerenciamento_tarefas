@@ -14,6 +14,16 @@ export class UsersRepository {
         });
     }
 
+    async authenticate(login: string, senha: string) {
+        const users = await this.userModel.find().lean();
+
+        const isAuth = users.some((usuario) => {
+            return (usuario.login === login && usuario.senha === senha);
+        });
+        
+        return isAuth;
+    }
+
     async listUsers() {
         return await this.userModel.find().lean();
     }
