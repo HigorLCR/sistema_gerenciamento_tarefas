@@ -19,7 +19,7 @@ Para funcionamento pleno de todos os serviços, é necessário executar 4 script
 
     - Instância do MongoDB (persistência de dados):
         . É necessário executar uma instância do MongoDB para que a persistência ocorra normalmente;
-        . Acesse via CLI a rota da instalação do MongoDB em seu computador (Se for a padrão do windows possivelmente é "C:/'Program Files'/   MongoDB/Server/7.0/bin");
+        . Acesse via CLI a rota da instalação do MongoDB em seu computador (Se for a padrão do windows possivelmente é "C:/'Program Files'/MongoDB/Server/7.0/bin");
         . Quando estiver na pasta bin via CLI, execute o script 'mongod' e deixe rodando; 
     
     - portal-tarefas (frontend):
