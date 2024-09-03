@@ -21,7 +21,6 @@ export class UsersController {
     @Get()
     async listUsers() {
         try {
-            console.log('ENTROU LIST')
             let response = await this.usersService.listUsers();
             
             return { response: response };
@@ -45,7 +44,6 @@ export class UsersController {
     @Get('/:id')
     async getUser(@Param('id') id: string) {
         try {
-            console.log('ENTROU GET')
             const response = await this.usersService.getUser(id);
 
             return { response: response };
@@ -57,7 +55,6 @@ export class UsersController {
     @Post()
     async createUser(@Body() body: CreateUserDto) {
         try {
-            console.log('ENTROU CREATE')
             const { login, senha } = body;
 
             const response = await this.usersService.createUser(
@@ -74,7 +71,6 @@ export class UsersController {
     @Put('/:id')
     async updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
         try {
-            console.log('ENTROU UPDATE')
             const { login, senha } = body;
 
             const response = await this.usersService.updateUser(
@@ -92,7 +88,6 @@ export class UsersController {
     @Delete('/:id')
     async deleteUser(@Param('id') id: string) {
         try {
-            console.log('ENTROU DELETE')
             const response = await this.usersService.deleteUser(id);
 
             return { response: response };
