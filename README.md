@@ -34,6 +34,10 @@ Para funcionamento pleno de todos os serviços, é necessário executar 4 script
         . É necessário acessar a pasta 'usuario-service' desse repositório via CLI e rodar o script `npm install`;
         . Após a instalação ser concluída, é necessário rodar o script `npm run start:dev` para iniciar o serviço e deixá-lo rodando;
 
+    ** IMPORTANTE
+    - é necessário utilizar o REST Client (citado na seção de Requisitos) para inserir o usuário 'admin' acessando o arquivo 'requests.http' e clicando em 'send request' na requisição 'POST http://localhost:3100/users' para que essa sirva como conta de acesso ao sistema;
+        .fazer isso depois que a instância do MongoDB e o usuario-service estiverem rodando;
+
 Decisões tomadas
 ================
 
@@ -51,5 +55,10 @@ Decisões tomadas
     . Axios para envio de requisições para APIs;
     . CoreUI para design e estilização de componentes;
 
-- No problema não estava claro como deveriam ser executadas as operações, decidi por usar uma API REST.
-- Optei por criar a automação realizando utilizando a biblioteca Tasks para um melhor controle de fluxo.
+- Foi feita a simulação de uma arquitetura de microsserviços com os serviços de usuário e tarefas, porém por falta de tempo para elaboração a conexão deles ao servidor do Mongo é a mesma;
+
+- Infelizmente, houveram coisas que eu não consegui implementar por falta de tempo hábil como por exemplo a endpoint de validação do token após o login, porém mesmo assim consegui fazer uma simulação de proteção das páginas após o login que eu sei que possui algumas vulnerabilidades porém era a única maneira possível de se implementar visando o tempo;
+
+- Além disso, eu tinha planos para de incluir um formulário para manipulação de usuários no frontend também, porém pelo motivo de falta de tempo hábil, ficou por enquanto apenas como uma ideia que pretendo implementar futuramente;
+
+- Agradeço muito quaisquer críticas, sejam positivas ou relativas em relação ao meu trabalho, pretendo usar essa tarefa como pontapé pra trabalhar mais profundamente no meu repositório do GitHub, desde já, muito obrigado pela oportunidade!!!;
