@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTask, updateTask, AppDispatch } from '../../store/index.ts';
@@ -28,6 +28,15 @@ function TaskEditor() {
     const { create } = useSelector((state: any) => {
         return state.taskReducer;
     });
+    const user = useSelector((state: any) => {
+        return state.userReducer;
+    })
+
+    useEffect(() => {
+        if (user && user.auth && !user.auth.token) {
+            navigate('/');
+        }
+    }, [user]);
 
     const onSendForm = () => {
         const dados = {
