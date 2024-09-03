@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTask, updateTask, AppDispatch } from '../../store/index.ts';
 import DatePicker from "react-datepicker";
@@ -12,12 +12,12 @@ import {
     CFormInput,
     CFormTextarea,
     CFormCheck,
-    CButtonGroup,
     CButton,
 } from '@coreui/react';
 
 function TaskEditor() {
     const location = useLocation();
+    const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
     const [titulo, setTitulo] = useState(location.state ? location.state.titulo : '');
@@ -58,7 +58,7 @@ function TaskEditor() {
                     <h3>{ location.state ? `Editando Tarefa '${location.state.id}'` : 'Criando Nova Tarefa'}</h3>
                 </CCol>
                 <CCol md={1}>
-                    <CButton color='secondary'>
+                    <CButton color='secondary' onClick={() => navigate('/home')}>
                         Voltar
                     </CButton>
                 </CCol>

@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { cleanAuthToken } from '../../store/index.ts';
 import {
     CContainer,
     CHeader,
@@ -11,15 +13,16 @@ import {
 } from '@coreui/react';
 
 function Header() {
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const onClickHome = () => {
         navigate('/home');
     };
 
-    const onClickNovaTarefa = () => {
-        navigate('/tarefa/formulario');  
+    const onClickSair = () => {
+        navigate('/');
+        dispatch(cleanAuthToken(null))
     };
 
     return (
@@ -31,7 +34,7 @@ function Header() {
                         <CNavLink style={{ cursor:'pointer' }} color='primary' onClick={onClickHome} >Home</CNavLink>
                     </CNavItem>
                     <CNavItem>
-                        <CButton color='success' onClick={onClickNovaTarefa} >Nova Tarefa</CButton>
+                        <CButton color='danger' onClick={onClickSair} >Sair</CButton>
                     </CNavItem>
                 </CHeaderNav>
             </CContainer>

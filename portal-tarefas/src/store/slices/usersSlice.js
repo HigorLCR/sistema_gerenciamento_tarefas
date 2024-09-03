@@ -11,6 +11,11 @@ const userSlice = createSlice({
             error: null
         },
     },
+    reducers: {
+        cleanAuthToken(state, action) {
+            state.auth.token = null;
+        }
+    },
     extraReducers(builder) {
         builder.addCase(auth.pending, (state, action) => {
             state.auth.isLoading = true;

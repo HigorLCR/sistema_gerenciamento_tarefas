@@ -19,8 +19,6 @@ function Login() {
         return state.userReducer;
     })
 
-    console.log("AUTH: ", user);
-
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
 

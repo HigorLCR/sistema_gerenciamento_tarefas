@@ -9,7 +9,8 @@ export const store = configureStore({
     }
 });
 
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof store.dispatch;
+export const { cleanAuthToken } = userSlice.actions;
 export * from './thunks/fetchTasks.ts';
 export * from './thunks/fetchTask.ts';
 export * from './thunks/createTask.ts';
