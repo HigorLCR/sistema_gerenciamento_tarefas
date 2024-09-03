@@ -37,5 +37,19 @@ Para funcionamento pleno de todos os serviços, é necessário executar 4 script
 Decisões tomadas
 ================
 
+- A descrição do problema foi muito aberta em relação a qualquer das tarefas pedidas, como CRUD de tarefas e usuários por exemplo, portanto eu fiz todas as operações básicas de CRUD para ambos serviços implementando uso delas no Frontend de modo a satisfazer a manipulação do sistema para o caso das Tarefas, e futuramente com uso amplo também para usuários;
+
+- A Stack escolhida para o BackEnd foi a seguinte:
+    . JavaScript/TypeScript com node.js;
+    . Framework Nest.JS para estrutura das APIs;
+    . MongoDB utilizando a Lib Mongoose;
+
+- A stack escolhida para o FrontEnd foi a seguinte:
+    . JavaScript/TypeScript;
+    . React;
+    . Redux para gerenciamento de estados;
+    . Axios para envio de requisições para APIs;
+    . CoreUI para design e estilização de componentes;
+
 - No problema não estava claro como deveriam ser executadas as operações, decidi por usar uma API REST.
 - Optei por criar a automação realizando utilizando a biblioteca Tasks para um melhor controle de fluxo.
