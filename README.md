@@ -2,20 +2,32 @@
 
 Requisitos
 ==========
-Para esse projeto é necessário instalar o node versão 14 - https://nodejs.org/en/download/
+Para esse projeto é necessário instalar os seguintes softwares: 
+
+    - node versão v20.17.0 - https://nodejs.org/en/download/
+    
+    - MongoDB versão 7.0 - https://www.mongodb.com/try/download/community?tck=docs_server (de preferência não instalar a versão AAS)
+        . É necessário ir em 'C:/' e criar as pastas 'data/db' para conseguir executar o mongodb;
+
+    - Para testar as endpoints de API manualmente, é possível utilizar uma extensão disponível na IDE VSCode chamada 'REST Client'
+        . ao baixar o REST Client e utilizar arquivos deixados na raiz de cada API chamados `requests.http`;
+        . Após baixar a extensão, botões com o texto 'send request' aparecerão acima das rotas, clicar nesse botão dispara uma requisição;
 
 Para executar
 =============
-`npm run start`
+Para funcionamento pleno de todos os serviços, é necessário executar 4 scripts diferentes em CLI (linha de comando), são eles:
+    
+    - portal-tarefas (frontend):
+        . É necessário acessar a pasta 'portal-tarefas' desse repositório via CLI e rodar o script `npm install`;
+        . Após a instalação ser concluída, é necessário rodar o script `npm start` para iniciar o serviço e deixá-lo rodando;
+    
+    - tarefa-service (API de tarefas):
+        . É necessário acessar a pasta 'tarefa-service' desse repositório via CLI e rodar o script `npm install`;
+        . Após a instalação ser concluída, é necessário rodar o script `npm run start:dev` para iniciar o serviço e deixá-lo rodando;
 
-Para fazer ação X 
-`curl http://localhost:3000/X`
-
-Para fazer ação Y 
-`curl http://localhost:3000/Y`
-
-Para rodar os testes
-`npm run test`
+    - usuario-service (API de usuários):
+        . É necessário acessar a pasta 'usuario-service' desse repositório via CLI e rodar o script `npm install`;
+        . Após a instalação ser concluída, é necessário rodar o script `npm run start:dev` para iniciar o serviço e deixá-lo rodando;
 
 Decisões tomadas
 ================
