@@ -1,0 +1,18 @@
+FRONTEND
+ - Incluir ícones em botões;
+ - Programar entrada com Enter;
+ - Melhorar feedback com novos componentes;
+ - Ajustar exibição da tabela de tarefas;
+ - Fazer interface de gerenciamento de usuários do site;
+ - Criar sistema de perfis;
+ - Programar navegação por teclado;
+ - Criar modal para visualização de dados;
+
+
+BACKEND
+ - Revisar endpoints CRUD;
+
+
+DEVOPS
+ - Criar conteinerização com docker;
+ - Fazer deploy com algum software adequado;
