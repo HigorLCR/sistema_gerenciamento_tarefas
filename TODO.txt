@@ -7,10 +7,15 @@ FRONTEND
  - Criar sistema de perfis;
  - Programar navegação por teclado;
  - Criar modal para visualização de dados;
+ - criar ordenação da lista de tarefas;
+ - criar paginação da lista de tarefas;
+ - fazer tela de catch de erro;
+ - fazer tela de unauthorized;
 
 
 BACKEND
  - Revisar endpoints CRUD;
+ - revisar sistema de tokens (user_service);
 
 
 DEVOPS

@@ -28,9 +28,11 @@ function Login() {
         }
     }, [user]);
 
-    const onClickAuth = (login, senha) => {
-        dispatch(auth({login, senha}));
 
+    const onSubmitAuth = (e) => {
+        e.preventDefault();
+
+        dispatch( auth({login, senha}) );
     };
 
     return (
@@ -44,7 +46,7 @@ function Login() {
             </CRow>
             <CRow className='mt-5'>
                 <CCol>
-                    <CForm>
+                    <CForm onSubmit={ (e) => onSubmitAuth(e) } >
                         <CRow className='mt-2 d-flex justify-content-center'>
                             <CCol md={5}>
                                 <CFormInput
@@ -69,7 +71,9 @@ function Login() {
                         <CRow className='mt-4'>
                             <CCol md={5}/>
                             <CCol className='d-flex justify-content-end' style ={{ marginRight: '3.5rem' }}>
-                                <CButton color='success' onClick={() => {onClickAuth(login, senha)}} >Entrar</CButton>
+                                <CButton color='success' type='submit'>
+                                    Entrar
+                                </CButton>
                             </CCol>
                             <CCol md={3}/>
                         </CRow>
