@@ -8,8 +8,8 @@ import {
     CCol,
     CForm,
     CFormInput,
-    CButton
 } from '@coreui/react';
+import Button from '../components/Button.tsx';
 
 function Login() {
     const dispatch = useDispatch<AppDispatch>();
@@ -23,6 +23,7 @@ function Login() {
     const [senha, setSenha] = useState('');
 
     useEffect(() => {
+        console.log("DADOS USER: ", user);
         if (user && user.auth && user.auth.token) {
             navigate('/home');
         }
@@ -71,9 +72,14 @@ function Login() {
                         <CRow className='mt-4'>
                             <CCol md={5}/>
                             <CCol className='d-flex justify-content-end' style ={{ marginRight: '3.5rem' }}>
-                                <CButton color='success' type='submit'>
-                                    Entrar
-                                </CButton>
+                                <Button
+                                    style={{ width: '5rem' }}
+                                    color='success'
+                                    label='Entrar'
+                                    type='submit'
+                                    isLoading={user.auth.isLoading}
+                                    spinnerColor='light'
+                                />
                             </CCol>
                             <CCol md={3}/>
                         </CRow>

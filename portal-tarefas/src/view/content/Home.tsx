@@ -9,6 +9,7 @@ import {
     CButton,
 } from '@coreui/react';
 import SimpleTable from '../components/SimpleTable.tsx';
+import Button from '../components/Button.tsx';
 
 function Home() {
     const dispatch = useDispatch<AppDispatch>();
@@ -61,7 +62,11 @@ function Home() {
             </CRow>
             <CRow>
                 <CCol>
-                    <CButton color='success' onClick={() => navigate('/tarefa/formulario')}>Nova Tarefa</CButton>
+                    <Button 
+                        color='success'
+                        label='Nova Tarefa'
+                        onClick={() => navigate('/tarefa/formulario')}
+                    />
                 </CCol>
             </CRow>
             <CRow>

@@ -14,6 +14,7 @@ import {
     CFormCheck,
     CButton,
 } from '@coreui/react';
+import Button from '../components/Button.tsx';
 
 function TaskEditor() {
     const location = useLocation();
@@ -67,9 +68,11 @@ function TaskEditor() {
                     <h3>{ location.state ? `Editando Tarefa '${location.state.id}'` : 'Criando Nova Tarefa'}</h3>
                 </CCol>
                 <CCol md={1}>
-                    <CButton color='secondary' onClick={() => navigate('/home')}>
-                        Voltar
-                    </CButton>
+                    <Button
+                        color='secondary' 
+                        label='Voltar'
+                        onClick={() => navigate('/home')}
+                    />
                 </CCol>
             </CRow>
             <CRow className='align-self-center'>
@@ -123,7 +126,11 @@ function TaskEditor() {
                         </CRow>
                         <CRow className='mt-3'>
                             <CCol>
-                                <CButton color='primary' onClick={onSendForm}>Enviar</CButton>
+                                <Button
+                                    color='primary'
+                                    label='Enviar'
+                                    onClick={onSendForm}
+                                />
                             </CCol>
                             {
                                 create.isPending

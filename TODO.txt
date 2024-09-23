@@ -1,6 +1,6 @@
 FRONTEND
  - Incluir ícones em botões;
- - Programar entrada com Enter;
+ x - Programar entrada com Enter;
  - Melhorar feedback com novos componentes;
  - Ajustar exibição da tabela de tarefas;
  - Fazer interface de gerenciamento de usuários do site;
@@ -11,6 +11,7 @@ FRONTEND
  - criar paginação da lista de tarefas;
  - fazer tela de catch de erro;
  - fazer tela de unauthorized;
+ -fazer arquivo separado para tipos do sistema;
 
 
 BACKEND
