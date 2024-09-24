@@ -35,6 +35,15 @@ const taskSlice = createSlice({
             error: null
         }
     },
+    reducers: {
+        clearCreateTask(state, action) {
+            state.create = {
+                isLoading: false,
+                success: false,
+                error: null
+            };
+        }
+    },
     extraReducers(builder) {
         builder.addCase(fetchTasks.pending, (state, action) => {
             state.tasks.isLoading = true;

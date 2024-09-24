@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createTask, updateTask, AppDispatch } from '../../store/index.ts';
+import { createTask, updateTask, AppDispatch, clearCreateTask } from '../../store/index.ts';
 import DatePicker from "react-datepicker";
 import {
     CContainer,
@@ -39,8 +39,13 @@ function TaskEditor() {
         }
     }, [user]);
 
+    const onClickVoltar = () => {
+        dispatch(clearCreateTask(null));
+        navigate('/home');
+    }
+    const onSubmitTask = (e) => {
+        e.preventDefault();
 
-    const onSubmitTask = () => {
         const dados = {
             id: location.state ? location.state.id : undefined,
             titulo: titulo,
@@ -71,13 +76,13 @@ function TaskEditor() {
                     <Button
                         color='secondary' 
                         label='Voltar'
-                        onClick={() => navigate('/home')}
+                        onClick={onClickVoltar}
                     />
                 </CCol>
             </CRow>
             <CRow className='align-self-center'>
                 <CCol>
-                    <CForm onSubmit={() => onSubmitTask()}>
+                    <CForm onSubmit={(e) => onSubmitTask(e)}>
                         <CRow className='mt-3'>
                             <CCol>
                                 <CFormInput
@@ -131,7 +136,6 @@ function TaskEditor() {
                                     label='Enviar'
                                     type='submit'
                                     style={{ width: '5rem' }}
-                                    onClick={onSubmitTask}
                                     isLoading={create.isLoading}
                                     spinnerColor='light'
                                 />
