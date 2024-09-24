@@ -12,7 +12,7 @@ import {
     CFormInput,
     CFormTextarea,
     CFormCheck,
-    CButton,
+    CAlert,
 } from '@coreui/react';
 import Button from '../components/Button.tsx';
 
@@ -39,7 +39,8 @@ function TaskEditor() {
         }
     }, [user]);
 
-    const onSendForm = () => {
+
+    const onSubmitTask = () => {
         const dados = {
             id: location.state ? location.state.id : undefined,
             titulo: titulo,
@@ -58,7 +59,6 @@ function TaskEditor() {
             setDescricao('');
             setDataCriacao(new Date());
         }
-
     }
 
     return (
@@ -77,7 +77,7 @@ function TaskEditor() {
             </CRow>
             <CRow className='align-self-center'>
                 <CCol>
-                    <CForm>
+                    <CForm onSubmit={() => onSubmitTask()}>
                         <CRow className='mt-3'>
                             <CCol>
                                 <CFormInput
@@ -129,13 +129,17 @@ function TaskEditor() {
                                 <Button
                                     color='primary'
                                     label='Enviar'
-                                    onClick={onSendForm}
+                                    type='submit'
+                                    style={{ width: '5rem' }}
+                                    onClick={onSubmitTask}
+                                    isLoading={create.isLoading}
+                                    spinnerColor='light'
                                 />
                             </CCol>
                             {
-                                create.isPending
-                                    ? 'carregando...'
-                                    : (create.error ? `Erro: ${create.error}` : (create.success ? 'Sucesso' : ''))
+                                create.error ? 
+                                    (<CAlert className='mt-2' dismissible color='danger'>`Erro: ${create.error}` </CAlert>)
+                                    : (create.success ? (<CAlert className='mt-2' dismissible color='success'>Tarefa criada com sucesso! </CAlert>): '')
                             }
                         </CRow>
                     </CForm>

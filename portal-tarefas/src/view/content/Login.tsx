@@ -23,7 +23,6 @@ function Login() {
     const [senha, setSenha] = useState('');
 
     useEffect(() => {
-        console.log("DADOS USER: ", user);
         if (user && user.auth && user.auth.token) {
             navigate('/home');
         }
